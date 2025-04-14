@@ -115,6 +115,7 @@ def process_lvbb_data(x_particles, all_df):
     # Create the adjustment factor array
     adjustment_factors = np.ones_like(weights_selected)
     adjustment_factors[y_selected == 0] = background_adjustment
+    adjustment_factors[y_selected == 1] = signal_adjustment
 
     # Apply the adjustments
     balanced_weights = weights_selected * adjustment_factors
@@ -153,20 +154,27 @@ def process_lvbb_data(x_particles, all_df):
     print(f"LVBB data saved - X shape: {x_selected.shape}, Y shape: {y_selected.shape}")
     
 def process_qqbb_data(x_particles, all_df):
-    """Process data for QQBB channel preserving original distribution but with class weights"""
-    print("\nProcessing QQBB data with class weighting...")
+    """Process data for QQBB channel with MET cut and class weighting"""
+    print("\nProcessing QQBB data with MET cut and class weighting...")
     
     # QQBB selection
     qqbb_selected = all_df['selection_category'].isin([3, 9])
     qqbb_truth = (all_df['truth_W_decay_mode'] == 2)
     
-    # Extract data - maintain original distribution, don't force equal counts
-    x_selected = x_particles[qqbb_selected].copy()
-    y_selected = qqbb_truth[qqbb_selected].astype(int).values
-    weights_selected = np.abs(all_df.loc[qqbb_selected, 'eventWeight'].values)
+    # Apply MET cut (30 GeV = 30000 MeV), same as lvbb
+    met_selection = all_df['MET'] > 30000
+    
+    # Combine selections: must be selected as qqbb AND pass MET cut
+    combined_mask = qqbb_selected & met_selection
+    
+    # Extract data using the combined mask
+    x_selected = x_particles[combined_mask].copy()
+    y_selected = qqbb_truth[combined_mask].astype(int).values
+    weights_selected = np.abs(all_df.loc[combined_mask, 'eventWeight'].values)
     
     # Print statistics
-    print(f"QQBB selected events: {np.sum(qqbb_selected)}")
+    print(f"QQBB selected events: {np.sum(combined_mask)}")
+    print(f"QQBB selected with MET > 30 GeV: {np.sum(combined_mask)}")
     print(f"QQBB signal events: {np.sum(y_selected)}")
     print(f"QQBB background events: {len(y_selected) - np.sum(y_selected)}")
     

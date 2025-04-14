@@ -148,8 +148,8 @@ def train_model(model, train_loader, val_loader, channel, model_type, num_epochs
     plt.grid(True)
     plt.tight_layout()
     plt.savefig(f'{model_name}_learning_curve.png')
-    plt.show()
-    
+    plt.close()
+        
     return model, history
 
 def evaluate_model(model, test_loader, model_name):
@@ -264,8 +264,8 @@ def visualize_predictions(metrics, model_name):
     plt.legend()
     plt.grid(True, alpha=0.3)
     plt.savefig(f'{model_name}_prediction_dist.png')
-    plt.show()
-
+    plt.close()
+    
 def visualize_confusion_matrix(metrics, model_name):
     """Visualize confusion matrix"""
     plt.figure(figsize=(8, 6))
@@ -279,8 +279,8 @@ def visualize_confusion_matrix(metrics, model_name):
     plt.xticks([0.5, 1.5], ['Background', 'Signal'])
     plt.yticks([0.5, 1.5], ['Background', 'Signal'])
     plt.savefig(f'{model_name}_confusion_matrix.png')
-    plt.show()
-
+    plt.close()
+    
 def visualize_roc_curve(metrics, model_name):
     """Visualize ROC curve"""
     plt.figure(figsize=(8, 8))
@@ -297,8 +297,8 @@ def visualize_roc_curve(metrics, model_name):
     plt.legend(loc="lower right")
     plt.grid(True, alpha=0.3)
     plt.savefig(f'{model_name}_roc_curve.png')
-    plt.show()
-
+    plt.close()
+    
 def visualize_model_comparison(cnn_metrics, transformer_metrics, channel):
     """Compare CNN and Transformer models for a channel"""
     # ROC Curve comparison
@@ -324,8 +324,8 @@ def visualize_model_comparison(cnn_metrics, transformer_metrics, channel):
     
     plt.tight_layout()
     plt.savefig(f'{channel}_roc_comparison.png', dpi=300)
-    plt.show()
-    
+    plt.close()
+        
     # Prediction Distributions
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))
     
@@ -373,8 +373,8 @@ def visualize_model_comparison(cnn_metrics, transformer_metrics, channel):
     
     plt.tight_layout()
     plt.savefig(f'{channel}_prediction_comparison.png', dpi=300)
-    plt.show()
-    
+    plt.close()
+        
     # Print metrics comparison
     print(f"\n===== {channel.upper()} Model Comparison =====")
     print(f"{'Metric':<20} {'CNN':<15} {'Transformer':<15}")

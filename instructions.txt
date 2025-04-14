@@ -1,0 +1,6 @@
+# Train both channels
+python train_models.py --channel both
+
+# Or train just one channel
+python train_models.py --channel lvbb
+python train_models.py --channel qqbb
