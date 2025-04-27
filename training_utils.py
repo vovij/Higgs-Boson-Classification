@@ -147,7 +147,7 @@ def train_model(model, train_loader, val_loader, channel, model_type, num_epochs
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig(f'{model_name}_learning_curve.png')
+    plt.savefig(f'results/{model_name}_learning_curve.png')
     plt.close()
         
     return model, history
@@ -263,7 +263,7 @@ def visualize_predictions(metrics, model_name):
     plt.title(f'{model_name} Prediction Distribution')
     plt.legend()
     plt.grid(True, alpha=0.3)
-    plt.savefig(f'{model_name}_prediction_dist.png')
+    plt.savefig(f'results/{model_name}_prediction_dist.png')
     plt.close()
     
 def visualize_confusion_matrix(metrics, model_name):
@@ -278,7 +278,7 @@ def visualize_confusion_matrix(metrics, model_name):
     plt.xlabel('Predicted Label')
     plt.xticks([0.5, 1.5], ['Background', 'Signal'])
     plt.yticks([0.5, 1.5], ['Background', 'Signal'])
-    plt.savefig(f'{model_name}_confusion_matrix.png')
+    plt.savefig(f'results/{model_name}_confusion_matrix.png')
     plt.close()
     
 def visualize_roc_curve(metrics, model_name):
@@ -296,7 +296,7 @@ def visualize_roc_curve(metrics, model_name):
     plt.title(f'{model_name} ROC Curve')
     plt.legend(loc="lower right")
     plt.grid(True, alpha=0.3)
-    plt.savefig(f'{model_name}_roc_curve.png')
+    plt.savefig(f'results/{model_name}_roc_curve.png')
     plt.close()
     
 def visualize_model_comparison(cnn_metrics, transformer_metrics, channel):
@@ -323,7 +323,7 @@ def visualize_model_comparison(cnn_metrics, transformer_metrics, channel):
     plt.grid(True, alpha=0.3)
     
     plt.tight_layout()
-    plt.savefig(f'{channel}_roc_comparison.png', dpi=300)
+    plt.savefig(f'results/{channel}_roc_comparison.png', dpi=300)
     plt.close()
         
     # Prediction Distributions
@@ -372,7 +372,7 @@ def visualize_model_comparison(cnn_metrics, transformer_metrics, channel):
     ax2.grid(True, alpha=0.3)
     
     plt.tight_layout()
-    plt.savefig(f'{channel}_prediction_comparison.png', dpi=300)
+    plt.savefig(f'results/{channel}_prediction_comparison.png', dpi=300)
     plt.close()
         
     # Print metrics comparison

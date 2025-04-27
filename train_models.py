@@ -37,7 +37,7 @@ def load_data(channel):
     print(f"Data loaded - X shape: {x.shape}, Y shape: {y.shape}")
     return x, y, weights
 
-def prepare_data_loaders(x, y, weights, batch_size=32):
+def prepare_data_loaders(x, y, weights, batch_size=64):
     """Prepare train, validation, and test data loaders"""
     # Split data into train, validation, and test sets
     test_size = 0.15
@@ -74,6 +74,8 @@ def prepare_data_loaders(x, y, weights, batch_size=32):
 
 def train_channel_models(channel):
     """Train and evaluate models for a specific channel"""
+    os.makedirs("results", exist_ok=True)
+    
     print(f"\n==== Processing {channel.upper()} Channel ====")
     
     # Load data
@@ -108,7 +110,7 @@ def train_channel_models(channel):
         # Standard LVBB training parameters
         cnn_lr = 1e-3
         transformer_lr = 5e-5
-        smoothing = 0.05
+        smoothing = 0.1
         transformer_epochs = 15
     else:  # qqbb
         # Enhanced QQBB training parameters with balanced data
@@ -134,8 +136,8 @@ def train_channel_models(channel):
             val_loader=val_loader,
             channel=channel, 
             model_type="cnn",
-            num_epochs=3,
-            patience=3,
+            num_epochs=20,
+            patience=5,
             lr=cnn_lr
         )
     
