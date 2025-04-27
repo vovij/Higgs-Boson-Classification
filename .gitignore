@@ -1,23 +1,139 @@
-/data20250214/**
-/preprocessed/**
-/__pycache__/**
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
 
-# Python-specific ignores
-*.pyc
-*.pyo
-*.pyd
-.Python
-env/
-venv/
-ENV/
+# C extensions
 *.so
+
+# Distribution / packaging
 .Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
 
-# IDE files
-.idea/
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+# Pipfile.lock
+
+# PEP 582; used by PDM, PEP 582 proposal
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# Microsoft Visual Studio Code settings
 .vscode/
+
+# macOS file system artifacts
+.DS_Store
+._*
+
+# IDE specific temp files
 *.swp
-*.swo
+*~
+
+# --- Project Specific ---
+
+# Raw Data files (ignore all content within, except .gitkeep)
+data20250214/*
+!data20250214/.gitkeep
+
+# Preprocessed data (ignore all content within, except .gitkeep)
+preprocessed/*
+!preprocessed/.gitkeep
+
+# NOTE: We are NOT ignoring the contents of models/, figures/, results/
+# Files inside these directories WILL be tracked by Git based on this setup.
+
+# Optional: Add any other specific file types you want to ignore
+# e.g., *.log, *.tmp
