@@ -1,3 +1,26 @@
-/data20250214/
-/preprocessed/
-/__pycache__/
+/data20250214/**
+/preprocessed/**
+/__pycache__/**
+
+# Don't ignore .gitkeep files
+!/**/.gitkeep
+
+# Python-specific ignores
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+*.so
+.Python
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
