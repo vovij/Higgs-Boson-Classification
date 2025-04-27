@@ -2,9 +2,6 @@
 /preprocessed/**
 /__pycache__/**
 
-# Don't ignore .gitkeep files
-!/**/.gitkeep
-
 # Python-specific ignores
 *.pyc
 *.pyo
